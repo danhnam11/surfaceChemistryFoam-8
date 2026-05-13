@@ -1,0 +1,106 @@
+species
+4
+(
+    Ru(s)
+    NH3(s)
+    H(s)
+    N(s)
+);
+
+
+Ru(s)
+{
+    specie
+    {
+        molWeight       101.07;
+        siteDensity     7.3e-06;  // in CK: 7.3e-7 mol/cm2 , in kmol/m2 in OF
+    }
+    equationOfState
+    {
+        rho             12.37e6;
+    }
+    thermodynamics
+    {
+        Cp              238;
+        Hf              5.712e6;
+        Cv              238;
+    }
+    transport
+    {
+        mu              0;
+        Pr              1;
+    }
+}
+
+
+NH3(s)
+{
+    specie
+    {
+        molWeight       17.0306;
+        siteDensity     7.3e-06;
+    }
+    equationOfState
+    {
+        rho             12.37e6;
+    }
+    thermodynamics
+    {
+        Cp              238;
+        Hf              0;
+        Cv              238;
+    }
+    transport
+    {
+        mu              0;
+        Pr              1;
+    }
+}
+
+N(s)
+{
+    specie
+    {
+        molWeight       14.0067;
+        siteDensity     7.3e-06;
+    }
+    equationOfState
+    {
+        rho             12.37e6;
+    }
+    thermodynamics
+    {
+        Cp              238;
+        Hf              0;
+        Cv              238;
+    }
+    transport
+    {
+        mu              0;
+        Pr              1;
+    }
+}
+
+H(s)
+{
+    specie
+    {
+        molWeight       1.00797;
+        siteDensity     7.3e-06;
+    }
+    equationOfState
+    {
+        rho             12.37e6;
+    }
+    thermodynamics
+    {
+        Cp              238;
+        Hf              0;
+        Cv              238;
+    }
+    transport
+    {
+        mu              0;
+        Pr              1;
+    }
+}

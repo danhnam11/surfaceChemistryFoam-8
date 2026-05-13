@@ -1,0 +1,11 @@
+EXE_INC = \
+    -IchemkinReader \
+    -IsurfChemkinReader \
+    -IsurfWriter \
+    -I$(LIB_SCHEM8_SRC)/thermophysicalModels/specie/lnInclude \
+    -I$(LIB_SCHEM8_SRC)/thermophysicalModels/reactionThermo/lnInclude
+
+EXE_LIBS = \
+    -L$(FOAM_USER_LIBBIN) \
+    -lcatSpecie \
+    -lchemistryModel

@@ -1,0 +1,27 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # Run from this directory
+
+# Source tutorial run functions
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+#runApplication surfaceFeatureExtract (in OF-6)
+#The surfaceFeatureExtract utility has been superseded and replaced by by the
+#more general surfaceFeatures utility in OF-8.
+
+# ---start----------------------------------------------------------------------------
+runApplication surfaceFeatures
+runApplication blockMesh
+runApplication snappyHexMesh -overwrite
+
+# if you want to run with parallel mode, using the following setup (uncomment:
+#  ------ start for parallel mode -------------------------
+
+#runApplication decomposePar
+#mpirun -np 4 snappyHexMesh -dict system/snappyHexMeshDict -overwrite -parallel > log.snappyHexMesh
+#runApplication reconstructParMesh -mergeTol 1e-6 -constant
+#rm -rf processor*
+
+#  ------ end for parallel mode ---------------------------
+
+runApplication checkMesh 
+# ---end------------------------------------------------------------------------------

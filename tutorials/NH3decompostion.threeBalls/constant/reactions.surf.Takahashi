@@ -1,0 +1,79 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
+-------------------------------------------------------------------------------
+
+Chemical mechanism for solid phase in OF format
+
+Ref: Takahashi et al. J. Chem. Eng. Jpn. 49 (2016) 22-28 
+
+\*---------------------------------------------------------------------------*/
+
+reactions
+{
+    un-named-reaction-0
+    {
+        //type            irreversibleSurfaceArrheniusSurface;
+        type            irreversibleSurfaceTakahashiSurface;
+        reaction        "NH3 + Ru(s) = NH3(s)";
+        //A               1.1479e+7;
+        A               3.4451e+6; // coeff = 0.3
+        beta            0;
+        Ta              0;
+    }
+    un-named-reaction-1
+    {
+        type            irreversibleSurfaceArrheniusSurface;
+        reaction        "NH3(s) + 3Ru(s) = N(s) + 3H(s)";
+        //A               4.7625e+34;
+        A               1.4312e+34; // coeff = 0.3
+        beta            0;
+        Ta              12724.7;
+    }
+    un-named-reaction-2
+    {
+        type            irreversibleSurfaceArrheniusSurface;
+        reaction        "2N(s) = N2 + 2Ru(s)";
+        //A               1.1802e+16;
+        A               3.5435e+15;
+        beta            0;
+        Ta              14853.6;
+    }
+    un-named-reaction-3
+    {
+        type            irreversibleSurfaceArrheniusSurface;
+        reaction        "2H(s) = H2 + 2Ru(s)";
+        //A               1.3536e+13;
+        A               4.0643e+12;
+        beta            0;
+        Ta              8154.42;
+    }
+    un-named-reaction-4
+    {
+        type            irreversibleSurfaceArrheniusSurface;
+        reaction        "NH3(s) = Ru(s) + NH3";
+        //A               3.2890e+19;
+        A               9.8712e+18;
+        beta            0;
+        Ta              7697.39;
+    }
+    un-named-reaction-5
+    {
+        //type            irreversibleSurfaceArrheniusSurface;
+        type            irreversibleSurfaceTakahashiSurface;
+        reaction        "H2 + 2Ru(s) = 2H(s)";
+        //A               8.9642e+8;
+        A               2.6916e+8;
+        beta            0;
+        Ta              0;
+    }
+}
+
+Tlow            0;
+Thigh           4.503599627e+15;
+
+
+// ************************************************************************* //

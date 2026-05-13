@@ -1,0 +1,132 @@
+species
+5
+(
+    Rh(s)
+    H2O(s)
+    H(s)
+    O(s)
+    OH(s)
+);
+
+
+Rh(s)
+{
+    specie
+    {
+        molWeight       102.91;
+        siteDensity     2.72e-08;  // in CK: 2.72e-9 mol/cm2 , in kmol/m2 in OF
+    }
+    equationOfState
+    {
+        rho             12.37e6;
+    }
+    thermodynamics
+    {
+        Cp              238;
+        Hf              5.712e6;
+        Cv              238;
+    }
+    transport
+    {
+        mu              0;
+        Pr              1;
+    }
+}
+
+
+H2O(s)
+{
+    specie
+    {
+        molWeight       17.0306;
+        siteDensity     2.72e-08;  // in CK: 2.72e-9 mol/cm2 , in kmol/m2 in OF
+    }
+    equationOfState
+    {
+        rho             12.37e6;
+    }
+    thermodynamics
+    {
+        Cp              238;
+        Hf              0;
+        Cv              238;
+    }
+    transport
+    {
+        mu              0;
+        Pr              1;
+    }
+}
+
+H(s)
+{
+    specie
+    {
+        molWeight       14.0067;
+        siteDensity     2.72e-08;  // in CK: 2.72e-9 mol/cm2 , in kmol/m2 in OF
+    }
+    equationOfState
+    {
+        rho             12.37e6;
+    }
+    thermodynamics
+    {
+        Cp              238;
+        Hf              0;
+        Cv              238;
+    }
+    transport
+    {
+        mu              0;
+        Pr              1;
+    }
+}
+
+OH(s)
+{
+    specie
+    {
+        molWeight       17.008;
+        siteDensity     2.72e-08;  // in CK: 2.72e-9 mol/cm2 , in kmol/m2 in OF
+    }
+    equationOfState
+    {
+        rho             12.37e6;
+    }
+    thermodynamics
+    {
+        Cp              238;
+        Hf              0;
+        Cv              238;
+    }
+    transport
+    {
+        mu              0;
+        Pr              1;
+    }
+}
+
+O(s)   
+{   
+    specie
+    {
+        molWeight       15.999;
+        siteDensity     2.72e-08;  // in CK: 2.72e-9 mol/cm2 , in kmol/m2 in OF
+    }
+    equationOfState
+    {
+        rho             12.37e6;
+    }   
+    thermodynamics
+    {
+        Cp              238;
+        Hf              0;
+        Cv              238;
+    }
+    transport
+    {   
+        mu              0;
+        Pr              1;
+    }
+
+}

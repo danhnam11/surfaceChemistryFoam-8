@@ -1,0 +1,57 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.7.1                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      binary;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     reactingFoam;
+
+startFrom       latestTime;
+
+startTime       0.0;
+
+stopAt          endTime;
+//stopAt          writeNow;
+
+endTime         0.015;
+
+deltaT          2e-7;
+
+writeControl    adjustableRunTime;
+
+writeInterval   0.0001;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  10;
+
+writeCompression uncompressed;
+
+timeFormat      general;
+
+timePrecision   7;
+
+runTimeModifiable yes;
+
+adjustTimeStep  no;
+
+maxCo           0.4;
+
+// ************************************************************************* //
+
+libs (
+      "libOpenFOAM.so"
+     );

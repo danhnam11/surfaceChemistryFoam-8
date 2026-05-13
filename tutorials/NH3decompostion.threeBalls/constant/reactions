@@ -1,0 +1,40 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
+-------------------------------------------------------------------------------
+
+Chemical mechanism for gas phase
+
+\*---------------------------------------------------------------------------*/
+
+elements
+3
+(
+H
+N
+Ru
+)
+;
+
+reactions
+{
+    /*
+    un-named-reaction-0
+    {
+        type            irreversibleArrhenius;
+        reaction        "N2 = N2";
+        A               1;
+        beta            0;
+        Ta              5032.195335;
+    }
+    */
+
+}
+Tlow            0;
+Thigh           4.503599627e+15;
+
+
+// ************************************************************************* //

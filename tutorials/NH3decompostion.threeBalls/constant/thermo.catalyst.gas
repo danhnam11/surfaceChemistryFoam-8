@@ -1,0 +1,89 @@
+species         
+3
+(
+NH3
+H2
+N2
+)
+;
+
+
+NH3
+{
+    specie
+    {
+        molWeight       17.0306;
+    }
+    thermodynamics
+    {
+        Tlow            200;
+        Thigh           6000;
+        Tcommon         1000;
+        highCpCoeffs    ( 2.63445 0.00566626 -1.72787e-06 2.38672e-10 -1.25788e-14 -6544.7 6.56629 );
+        lowCpCoeffs     ( 4.28603 -0.00466052 2.17185e-05 -2.28089e-08 8.2638e-12 -6741.73 -0.625373 );
+    }
+    transport
+    {
+        As              1.67212e-06;
+        Ts              170.672;
+    }
+    elements
+    {
+        N               1;
+        H               3;
+    }
+}
+
+N2
+{
+    specie
+    {
+        molWeight       28.0134;
+    }
+    thermodynamics
+    {
+        Tlow            200;
+        Thigh           5000;
+        Tcommon         1000;
+        highCpCoeffs    ( 2.92664 0.00148798 -5.68476e-07 1.0097e-10 -6.75335e-15 -922.798 5.98053 );
+        lowCpCoeffs     ( 3.29868 0.00140824 -3.96322e-06 5.64152e-09 -2.44485e-12 -1020.9 3.95037 );
+    }
+    transport
+    {
+        As              1.67212e-06;
+        Ts              170.672;
+    }
+    elements
+    {
+        N               2;
+    }
+}
+
+
+H2
+{
+    specie
+    {
+        molWeight       2.01594;
+    }
+    thermodynamics
+    {
+        Tlow            200;
+        Thigh           3500;
+        Tcommon         1000;
+        highCpCoeffs    ( 3.33728 -4.94025e-05 4.99457e-07 -1.79566e-10 2.00255e-14 -950.159 -3.20502 );
+        lowCpCoeffs     ( 2.34433 0.00798052 -1.94782e-05 2.01572e-08 -7.37612e-12 -917.935 0.68301 );
+    }
+    transport
+    {
+        As              1.67212e-06;
+        Ts              170.672;
+    }
+    elements
+    {
+        H               2;
+    }
+}
+
+
+

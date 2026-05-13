@@ -1,0 +1,28 @@
+EXE_INC = \
+    -I$(LIB_SCHEM8_SRC)/thermophysicalModels/basic/lnInclude \
+    -I$(LIB_SCHEM8_SRC)/thermophysicalModels/specie/lnInclude \
+    -I$(LIB_SCHEM8_SRC)/thermophysicalModels/thermophysicalProperties/lnInclude \
+    -I$(LIB_SCHEM8_SRC)/thermophysicalModels/reactionThermo/lnInclude \
+    -I$(LIB_SCHEM8_SRC)/thermophysicalModels/SLGThermo/lnInclude \
+    -I$(LIB_SRC)/MomentumTransportModels/momentumTransportModels/lnInclude \
+    -I$(LIB_SCHEM8_SRC)/MomentumTransportModels/compressible/lnInclude \
+    -I$(LIB_SCHEM8_SRC)/ThermophysicalTransportModels/lnInclude \
+    -I$(LIB_SRC)/regionModels/regionModel/lnInclude \
+    -I$(LIB_SCHEM8_SRC)/regionModels/surfaceFilmModels/lnInclude\
+    -I$(LIB_SRC)/finiteVolume/lnInclude \
+    -I$(LIB_SRC)/meshTools/lnInclude
+
+LIB_LIBS = \
+    -L$(FOAM_USER_LIBBIN) \
+    -lfluidThermophysicalModels \
+    -lcatSpecie \
+    -lthermophysicalProperties \
+    -lreactionThermophysicalModels \
+    -lSLGThermo \
+    -lmomentumTransportModels \
+    -lfluidThermoMomentumTransportModels \
+    -lthermophysicalTransportModels \
+    -lregionModels \
+    -lsurfaceFilmModels \
+    -lfiniteVolume \
+    -lmeshTools

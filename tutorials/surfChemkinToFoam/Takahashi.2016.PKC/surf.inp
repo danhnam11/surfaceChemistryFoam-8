@@ -1,0 +1,16 @@
+SITE/Ru_surface/    SDEN/7.3E-7/
+    Ru(s)
+    NH3(s)
+    N(s)
+    H(s)
+END
+REACTIONS      MWOFF   KJOULES/MOLE  
+NH3 + Ru(s) => NH3(s)                       3.4437E+09  0.000      0.0000
+    PKC
+NH3(s) + 3Ru(s) => N(s) + 3H(s)             1.4288E+37  0.000      105.80
+2N(s) => N2 + 2Ru(s)                        3.5406E+16  0.000      123.50
+2H(s) => H2 + 2Ru(s)                        4.0608E+13  0.000      67.800
+NH3(s) => Ru(s) + NH3                       9.8670E+18  0.000      64.000
+H2 + 2Ru(s) => 2H(s)                        2.6893E+12  0.000      0.0000
+    PKC 
+END

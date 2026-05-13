@@ -1,0 +1,17 @@
+# ------------------------------------------------------------------
+# Allrun script for kineticChemkinToFoam tutorial
+# ------------------------------------------------------------------
+
+# Clean previous outputs first 
+./Allclean
+
+echo "Running surfChemkinToFoam inside $(pwd)..."
+
+surfChemkinToFoam \
+    surf.inp \
+    surfTherm.dat \
+    surfaceThermoDict \
+    reactions.surf \
+    thermo.surf.const
+
+#------------------------------------------------------------------------------

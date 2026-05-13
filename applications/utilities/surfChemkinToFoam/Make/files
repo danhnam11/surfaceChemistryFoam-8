@@ -1,0 +1,8 @@
+surfChemkinReader/surfChemkinReader.C
+surfChemkinReader/surfChemkinLexer.L
+surfChemkinToFoam.C
+surfWriter/surfThermo.C
+surfWriter/surfThermoUtils.C
+surfWriter/surfReactions.C
+
+EXE = $(FOAM_USER_APPBIN)/surfChemkinToFoam

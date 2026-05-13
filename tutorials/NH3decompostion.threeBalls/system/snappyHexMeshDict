@@ -1,0 +1,263 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      snappyHexMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+castellatedMesh on;
+snap            on;
+//addLayers       on;
+addLayers       off;
+
+geometry
+{
+    catalyticWalls  // you can define any name for the geometry that you want
+    {
+        type triSurfaceMesh;
+        file "catalyst.stl";
+    }     
+
+    wall  // // user defined name
+    {
+        type triSurfaceMesh;
+        file "wall.stl";
+    }
+
+    inlet  // user defined name
+    {
+        type triSurfaceMesh;
+        file "inlet.stl";
+    }
+
+    outlet  // user defined namet
+    {
+        type triSurfaceMesh;
+        file "outlet.stl";
+    }	
+};
+
+
+// Settings for the castellatedMesh generation.
+castellatedMeshControls
+{
+    maxLocalCells  		1000000;  
+    maxGlobalCells 		2000000;  
+    //minRefinementCells 	1;  //recommended 
+    minRefinementCells 	5;  	//for better edge feature 
+    maxLoadUnbalance 	0.10;
+    //nCellsBetweenLevels 3;    //recommended 
+    //nCellsBetweenLevels 4;
+    nCellsBetweenLevels 5;
+
+	planarAngle 		30;
+    allowFreeStandingZoneFaces true;
+	
+    //resolveFeatureAngle 60;  //to avoid too much refinement with curvature
+    resolveFeatureAngle 5;  //recommended
+	
+    locationInMesh (0.01 0 0);
+	
+	// Explicit feature edge refinement 
+    features
+    (
+		{ file "catalyst.eMesh"; 	level 2;}
+		{ file "wall.eMesh"; 		level 2;}
+		{ file "inlet.eMesh"; 		level 2;}
+		{ file "outlet.eMesh"; 		level 2;}	
+    );
+
+    // Surface based refinement
+    refinementSurfaces
+    {
+		wall
+		{
+			level (2 2);
+            patchInfo
+            {
+                type wall;
+            }			
+		}
+
+		inlet
+		{
+			level (2 2);
+            patchInfo
+            {
+                type patch;
+            }				
+		}
+		
+		outlet
+		{
+			level (2 2);
+            patchInfo
+            {
+                type patch;
+            }				
+		}
+		
+		catalyticWalls
+		{
+			level (3 3);
+            patchInfo
+            {   
+                type wall;
+            }			
+		}	
+    }
+
+    // Region-wise refinement
+    refinementRegions
+    {
+    }
+
+    locationInMesh (0 0 0.001);	
+	
+}
+
+
+// Settings for the snapping.
+snapControls
+{
+	//nSmoothPatch 	3;  //recommended 	
+	nSmoothPatch 	5;  //recommended 	
+	//nSmoothPatch 	10; //improved 
+	
+	//tolerance 2.0;
+	tolerance 1.0; 	
+
+	nSolveIter 50;		//recommended
+	//nSolveIter 100;		//recommended
+	//nSolveIter 300;		//improved 
+	
+	nRelaxIter 5;		//recommended
+	//nRelaxIter 10;	//improved 10-20-50
+	
+	// feature snapping
+	nFeatureSnapIter 10;	//recommended
+	//nFeatureSnapIter 20;	//improved 20-50-100 //standard 	
+	//nFeatureSnapIter 100;	//improved 20-50-100	
+	
+	implicitFeatureSnap false;
+	explicitFeatureSnap true;
+	multiRegionFeatureSnap false;
+}
+
+
+// Settings for the layer addition.
+addLayersControls
+{
+    // Per final patch (so geometry!) the layer information
+    layers
+    {
+		/*
+        catalyticWalls
+        {
+            nSurfaceLayers 2;
+			expansionRatio 1.1;  //locally 
+        }
+		*/
+
+        wall
+        {
+            nSurfaceLayers 3;
+			expansionRatio 1.1;  //locally 
+        }
+		
+    }
+
+
+	// when this one is relative, means the thickness size is percentage
+	// compared to cell size. 
+	// For example, firstLayerThickness 0.1 mean 10% of cell size 
+	relativeSizes true;  
+
+	firstLayerThickness 0.1; 
+	//finalLayerThickness 0.4; // only select one, either first, or final
+
+    // Expansion factor for layer mesh (globally) 
+    expansionRatio 1.2;
+
+    //- Wanted thickness of final added cell layer. If multiple layers
+    //  is the
+    //  thickness of the layer furthest away from the wall.
+    //  Relative to undistorted size of cell outside layer.
+    finalLayerRatio 0.3;
+
+    //- Minimum thickness of cell layer. If for any reason layer
+    //  cannot be above minThickness do not add layer.
+    //  Relative to undistorted size of cell outside layer.
+    minThickness 0.1;
+
+    //- If points get not extruded do nGrow layers of connected faces that are
+    //  also not grown. This helps convergence of the layer addition process
+    //  close to features.
+
+
+    // Boundary layer advanced settings, dont change from here
+    nGrow 0;
+
+    //featureAngle 0;  		//no inflation 
+    featureAngle 130;		//recommended 		
+    //featureAngle 330;		//improved	
+
+    nSmoothSurfaceNormals 1; // Number of smoothing iterations of surface normals
+    nSmoothNormals 3; // Number of smoothing iterations of interior mesh movement direction
+    nSmoothThickness 10; // Smooth layer thickness over surface patches
+    maxFaceThicknessRatio 0.5; // Stop layer growth on highly warped cells
+    maxThicknessToMedialRatio 0.6; // 0.3 Reduce layer growth where ratio thickness to medial distance is large
+    minMedianAxisAngle 90; // 130 Angle used to pick up medial axis points
+    nBufferCellsNoExtrude 0; // Create buffer region for new layer terminations
+
+    nLayerIter 		50; 
+    nRelaxedIter 	20; 
+    nRelaxIter 		5;
+	
+}
+
+
+// Don't change this part 
+meshQualityControls
+{
+    maxNonOrtho 75;
+    maxBoundarySkewness 20;  //originally 20 for better quality 4
+    maxInternalSkewness 4;
+    maxConcave 80;
+    minVol 1e-13;
+    minTetQuality 1e-30;
+    minArea -1;
+    minTwist 0.02;
+    minDeterminant 0.001;
+    minFaceWeight 0.05;
+    minVolRatio 0.01;
+    minTriangleTwist -1;
+    nSmoothScale 4;
+    errorReduction 0.75;
+	
+	relaxed
+	{
+		maxNonOrtho       75;
+	}
+}
+
+
+// Extra option
+writeFlags
+(
+);
+
+// Merge tolerance. Is fraction of overall bounding box of initial mesh.
+// Note: the write tolerance needs to be higher than this.
+mergeTolerance 1E-10;
+
+// ************************************************************************* //

@@ -1,0 +1,48 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      thermophysicalProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+usingDetailedTransportModel true;  //default is false
+usingCoTHERM                false; //default is false
+soretEffect                 true;  //default is false
+
+// Set major species list for coTHERM
+// If coTHERM is not used, inertSpecies is used to form this list
+majorSpeciesForCoTHERM (H2 NH3 N2);
+
+// Set threshold for coThermPhy
+epsilonOnlyT      0.1;    // [K]
+epsilonT          0.1;    // [K]
+epsilonP          100;    // [Pa]
+epsilonSpecies    0.001;  // [-] mass fraction
+
+thermoType
+{
+    type            hePsiThermo;
+    mixture         DTMMultiComponentMixture;
+    transport       DTMTransport;
+    thermo          janaf;
+    energy          sensibleEnthalpy;
+    equationOfState perfectGas;
+    specie          specie;
+
+}
+
+inertSpecie AR;
+
+#include "thermo.DTM"
+
+// ************************************************************************* //

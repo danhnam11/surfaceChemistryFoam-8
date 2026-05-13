@@ -1,0 +1,20 @@
+SITE/Ni_SURFACE/    SDEN/2.6E-9/
+Ni(s) H(s) NH3(s) N(s) NH2(s) NH(s)
+END
+REACTIONS  KJOULES/MOLE MWOFF
+Ni(s) + Ni(s) + H2 => H(s) +H(s)                1.000E-02  0.000      0.000 
+    STICK
+Ni(s) + NH3 => NH3(s)                           1.100E-02  0.000      0.000
+    STICK
+Ni(s) + Ni(s) + N2 => N(s) + N(s)               1.000E-06  0.000      0.000
+    STICK
+H(s) +H(s) => Ni(s) + Ni(s) +H2                 3.315E+19  0.000      82.210
+NH3(s) => Ni(s) + NH3                           8.210E+14  0.000      78.630 
+N(s) + N(s) => Ni(s) + Ni(s) + N2               4.442E+22  0.000      210.840 
+NH3(s) + Ni(s) => NH2(s) + H(s)                 5.723E+22  0.000      78.990 
+NH2(s) + H(s) => NH3(s) + Ni(s)                 1.320E+24  0.000      48.810 
+NH2(s) + Ni(s) => NH(s) + H(s)                  2.718E+22  0.000      75.740 
+NH(s) + H(s) => NH2(s) + Ni(s)                  3.702E+19  0.000      74.870 
+NH(s) + Ni(s) => N(s) + H(s)                    6.213E+19  0.000      22.930 
+N(s) + H(s) => NH(s) + Ni(s)                    2.070E+19  0.000      156.040
+END

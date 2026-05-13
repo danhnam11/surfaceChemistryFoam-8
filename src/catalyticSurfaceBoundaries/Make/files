@@ -1,0 +1,6 @@
+catalyticWall/catalyticWallFvPatchFields.C
+stefanFlowVelocity/stefanFlowVelocityFvPatchVectorField.C
+speciesFluxFromCatalyticSurfaces/speciesFluxFromCatalyticSurfacesFvPatchScalarField.C
+heatFluxFromCatalyticSurfaces/heatFluxFromCatalyticSurfacesFvPatchScalarField.C
+
+LIB = $(FOAM_USER_LIBBIN)/libcatalyticSurfaceFvPatchFields

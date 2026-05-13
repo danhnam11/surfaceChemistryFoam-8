@@ -1,0 +1,102 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      surfaceFeaturesDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+catalyst
+{
+    surfaces
+    (
+        "catalyst.stl"
+    );
+
+    // Mark edges whose adjacent surface normals are at an angle less
+    // than includedAngle as features
+    // - 0  : selects no edges
+    // - 180: selects all edges
+    includedAngle           170;
+
+    // Do not mark region edges
+    geometricTestOnly       yes;
+
+    writeObj                yes;
+    verboseObj              yes;
+    writeVTK                yes;	
+}
+
+
+wall
+{
+    surfaces
+    (
+        "wall.stl"
+    );
+
+    // Mark edges whose adjacent surface normals are at an angle less
+    // than includedAngle as features
+    // - 0  : selects no edges
+    // - 180: selects all edges
+    includedAngle           170;
+
+    // Do not mark region edges
+    geometricTestOnly       yes;
+
+    writeObj                yes;
+    verboseObj              yes;
+    writeVTK                yes;	
+}
+
+inlet
+{
+    surfaces
+    (
+        "inlet.stl"
+    );
+
+    // Mark edges whose adjacent surface normals are at an angle less
+    // than includedAngle as features
+    // - 0  : selects no edges
+    // - 180: selects all edges
+    includedAngle           170;
+
+    // Do not mark region edges
+    geometricTestOnly       yes;
+
+    writeObj                yes;
+    verboseObj              yes;
+    writeVTK                yes;	
+}
+
+outlet
+{
+    surfaces
+    (
+        "outlet.stl"
+    );
+
+    // Mark edges whose adjacent surface normals are at an angle less
+    // than includedAngle as features
+    // - 0  : selects no edges
+    // - 180: selects all edges
+    includedAngle           170;
+
+    // Do not mark region edges
+    geometricTestOnly       yes;
+
+    writeObj                yes;
+    verboseObj              yes;
+    writeVTK                yes;	
+}
+
+// ************************************************************************* //

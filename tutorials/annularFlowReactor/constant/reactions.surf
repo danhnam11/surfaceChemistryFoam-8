@@ -1,0 +1,136 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
+-------------------------------------------------------------------------------
+Reference:
+    Bui-Pham, M. N. (1992).
+    Studies in structures of lam inar hydrocarbon flames.
+    PhD Thesis, University of California, San Diego
+
+Notes:
+    This mechanism was developed for simulating this exact counter-flow flame
+    configuration. It should not be considered general-purpose.
+
+\*---------------------------------------------------------------------------*/
+
+reactions
+{
+    un-named-reaction-1
+    {
+        type            irreversibleSurfaceStickArrheniusSurface;
+        reaction        "H2 + 2Rh(s) = 2H(s)";
+        A               3.000E-2;
+        beta            0;
+        Ta              0;
+    }
+
+    un-named-reaction-2
+    {
+        type            irreversibleSurfaceStickArrheniusSurface;
+        reaction        "O2 + 2Rh(s) = 2O(s)";
+        A               1.000E-2;
+        beta            0;
+        Ta              0;
+    }
+
+    un-named-reaction-3
+    {
+        type            irreversibleSurfaceStickArrheniusSurface;
+        reaction        "H2O + Rh(s) = H2O(s)";
+        A               1.000E-1;
+        beta            0;
+        Ta              0;
+    }
+
+    un-named-reaction-4
+    {
+        type            irreversibleSurfaceArrheniusSurface;
+        reaction        "2H(s) = 2Rh(s) + H2";
+        A               5.574E+18;
+        beta            0.239;
+        Ta              7179.6;
+    }
+
+    un-named-reaction-5
+    {
+        type            irreversibleSurfaceArrheniusSurface;
+        reaction        "2O(s) = 2Rh(s) + O2";
+        A               5.33E+21;
+        beta            -0.137;
+        Ta              46547.4;
+    }
+
+    un-named-reaction-6
+    {
+        type            irreversibleSurfaceArrheniusSurface;
+        reaction        "H2O(s) = Rh(s) + H2O";
+        A               6.8580E+14;
+        beta            -0.28;
+        Ta              5411.7;
+    }
+
+    un-named-reaction-7
+    {
+        type            irreversibleSurfaceArrheniusSurface;
+        reaction        "O(s) + H(s) = OH(s) + Rh(s)";
+        A               8.8260E+20;
+        beta            -0.048;
+        Ta              8824.3;
+    }
+
+    un-named-reaction-8
+    {
+        type            irreversibleSurfaceArrheniusSurface;
+        reaction        "OH(s) + Rh(s) = O(s) + H(s)";
+        A               1.0000E+20;
+        beta            0.045;
+        Ta              5778.3;
+    }
+
+    un-named-reaction-9
+    {
+        type            irreversibleSurfaceArrheniusSurface;
+        reaction        "OH(s) + H(s) = H2O(s) + Rh(s)";
+        A               1.7430E+21;
+        beta            -0.127;
+        Ta              5019.4;
+    }
+
+    un-named-reaction-10
+    {
+        type            irreversibleSurfaceArrheniusSurface;
+        reaction        "H2O(s) + Rh(s) = OH(s) + H(s)";
+        A               5.4080E+21;
+        beta            0.129;
+        Ta              11813.8;
+    }
+
+    un-named-reaction-11
+    {
+        type            irreversibleSurfaceArrheniusSurface;
+        reaction        "OH(s) + OH(s) = O(s) + H2O(s)";
+        A               5.7360E+19;
+        beta            -0.081;
+        Ta              14625.2;
+    }
+
+    un-named-reaction-12
+    {
+        type            irreversibleSurfaceArrheniusSurface;
+        reaction        "O(s) + H2O(s) = OH(s) + OH(s)";
+        A               1.5700E+21;
+        beta            0.081;
+        Ta              24465.6;
+    }
+
+
+}
+
+Tlow            0;
+Thigh           4.503599627e+15;
+
+
+// ************************************************************************* //

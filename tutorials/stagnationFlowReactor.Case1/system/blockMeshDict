@@ -1,0 +1,138 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+convertToMeters 0.001;  //mm
+
+halfAngle 2.5; 
+
+// Radius 
+r1 78; //radius of tube 
+x1 6;
+x2 20;
+x3 39; 
+
+xNum #calc "4*$r1";
+zNum1 #calc "4*$x1";
+zNum2 #calc "4*($x2-$x1)";
+zNum3 #calc "10*($x3-$x2)";
+
+radHalfAngle    #calc "degToRad($halfAngle)";   //change degree to radian
+
+y1   #calc "$r1*cos($radHalfAngle)";
+z1   #calc "$r1*sin($radHalfAngle)";
+nz1  #calc "-1*$z1";
+
+vertices
+(
+  (0   0   0)        //0
+  (0   $y1 $z1)      //1
+  (0   $y1 $nz1)     //2
+
+  ($x1 0   0)        //3
+  ($x1 $y1 $z1)      //4
+  ($x1 $y1 $nz1)     //5
+
+  ($x2 0   0)        //6
+  ($x2 $y1 $z1)      //7
+  ($x2 $y1 $nz1)     //8
+
+  ($x3 0   0)        //9
+  ($x3 $y1 $z1)      //10
+  ($x3 $y1 $nz1)     //11
+
+);
+
+blocks
+(
+    hex (0  2  1  0  3  5  4  3)   ($xNum 1 $zNum1)  simpleGrading (1 1 1) //block1
+    hex (3  5  4  3  6  8  7  6)   ($xNum 1 $zNum2)  simpleGrading (1 1 1) //block1
+    hex (6  8  7  6  9  11 10 9)   ($xNum 1 $zNum3 )  simpleGrading (1 1 0.1) //block1
+);
+
+edges
+(
+);
+
+boundary
+(
+    inlet
+    {
+        type patch;
+        faces
+        (
+            (1 2 0 0)
+        );
+    }
+    outlet
+    {
+        type patch;
+        faces
+        (
+            (1  4  5  2)
+            (7  10 11 8)
+            (4 7 8 5)     //from heated wall
+        );
+    }
+
+    heatedWall
+    {
+        type patch;
+        faces
+        (
+            (10 9 9 11)
+        );
+    }
+
+    axis
+    {
+        type empty;
+        faces
+        (
+            (3 0 0 3)
+            (6 3 3 6)
+            (9 6 6 9)
+        );
+    }
+ 
+    back
+    {
+        type wedge;
+        faces
+        (
+            (0 2 5 3)
+            (3 5 8 6)
+            (6 8 11 9)
+        );
+    }
+
+    front
+    {
+        type wedge;
+        faces
+        (
+            (0 3 4 1)
+            (3 6 7 4)
+            (6 9 10 7)
+        );
+    }
+
+);
+
+mergePatchPairs
+(
+);
+
+// ************************************************************************* //

@@ -1,0 +1,258 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     catalystFoam;
+
+//startFrom       startTime;
+startFrom       latestTime;
+
+startTime       0;
+
+stopAt          endTime;
+//stopAt          writeNow;
+
+endTime         0.5;
+
+deltaT          1e-6;
+
+writeControl    adjustableRunTime;
+
+writeInterval   0.1;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable true;
+
+adjustTimeStep  yes;
+//adjustTimeStep  no;
+
+maxCo           0.5;
+
+functions
+{
+    moleFractions1
+    {
+        // Conditional mandatory entries (unmodifiable)
+        // Either of the below depending on
+        // the thermodynamics package used in the solver.
+
+        // Option-1
+        type                 psiReactionThermoMoleFractions;
+
+        // Option-2
+        //type                 rhoReactionThermoMoleFractions;
+
+        // Mandatory entries (unmodifiable)
+        libs                   ("libfieldFunctionObjects.so");
+
+        // Optional entries (runtime modifiable)
+        //phase                <phaseName>;
+
+        // Optional (inherited) entries
+        writeControl    writeTime;
+        writeFields     true;
+        log             true;
+    }
+
+    MinMaxH2
+    {
+        type                    fieldMinMax;
+        fields                  (H2);
+        libs                   ("libfieldFunctionObjects.so");
+
+        log                     true;
+        writeControl            timeStep;
+        writeInterval           10;
+        writeFields             false;
+
+    }
+
+    MinMaxXH2
+    {
+        type                    fieldMinMax;
+        fields                  (X_H2);
+        libs                   ("libfieldFunctionObjects.so");
+
+        log                     true;
+        writeControl            timeStep;
+        writeInterval           10;
+        writeFields             false;
+
+    }
+
+    wallAvgXN2
+    {
+        type            surfaceFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+
+        regionType      patch;
+        name            heatedWall;
+
+        operation       areaAverage;
+        fields          (X_N2);
+
+        writeControl    timeStep;
+        writeInterval   1;
+        log             true;
+        writeFields     false;
+    }
+
+    wallAvgXH2O
+    {
+        type            surfaceFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+
+        regionType      patch;
+        name            heatedWall;
+
+        operation       areaAverage;
+        fields          (X_H2O);
+
+        writeControl    timeStep;
+        writeInterval   1;
+        log             true;
+        writeFields     false;
+    }
+    wallAvgXH2
+    {
+        type            surfaceFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+
+        regionType      patch;
+        name            heatedWall;
+
+        operation       areaAverage;
+        fields          (X_H2);
+
+        writeControl    timeStep;
+        writeInterval   1;
+        log             true;
+        writeFields     false;
+    }
+
+    wallAvgXO2
+    {
+        type            surfaceFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+
+        regionType      patch;
+        name            heatedWall;
+
+        operation       areaAverage;
+        fields          (X_O2);
+
+        writeControl    timeStep;
+        writeInterval   1;
+        log             true;
+        writeFields     false;
+    }
+    wallAvgRhs
+    {
+        type            surfaceFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+
+        regionType      patch;
+        name            heatedWall;
+
+        operation       areaAverage;
+        fields          (Rh(s));
+
+        writeControl    timeStep;
+        writeInterval   1;
+        log             true;
+        writeFields     false;
+    }
+
+    wallAvgHs
+    {
+        type            surfaceFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+
+        regionType      patch;
+        name            heatedWall;
+
+        operation       areaAverage;
+        fields          (H(s));
+
+        writeControl    timeStep;
+        writeInterval   1;
+        log             true;
+        writeFields     false;
+    }
+    wallAvgH2Os
+    {
+        type            surfaceFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+
+        regionType      patch;
+        name            heatedWall;
+
+        operation       areaAverage;
+        fields          (H2O(s));
+
+        writeControl    timeStep;
+        writeInterval   1;
+        log             true;
+        writeFields     false;
+    }
+
+    wallAvgOs
+    {
+        type            surfaceFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+
+        regionType      patch;
+        name            heatedWall;
+
+        operation       areaAverage;
+        fields          (O(s));
+
+        writeControl    timeStep;
+        writeInterval   1;
+        log             true;
+        writeFields     false;
+    }
+
+    wallAvgOHs
+    {
+        type            surfaceFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+
+        regionType      patch;
+        name            heatedWall;
+
+        operation       areaAverage;
+        fields          (OH(s));
+
+        writeControl    timeStep;
+        writeInterval   1;
+        log             true;
+        writeFields     false;
+    }
+
+}
+// ************************************************************************* //

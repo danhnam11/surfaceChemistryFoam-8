@@ -1,0 +1,9 @@
+basicCatThermo/basicCatThermo.C
+catThermo/catThermo.C
+psiCatThermo/psiCatThermo.C
+
+mixtures/basicSpecieCatMixture/basicSpecieCatMixture.C
+psiReactionCatThermo/psiReactionCatThermo.C
+psiReactionCatThermo/psiReactionCatThermos.C
+
+LIB = $(FOAM_USER_LIBBIN)/libcatReactionThermophysicalModels

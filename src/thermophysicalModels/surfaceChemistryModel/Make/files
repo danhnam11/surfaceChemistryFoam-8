@@ -1,0 +1,9 @@
+surfaceChemistryModel/basicSurfaceChemistryModel/basicSurfaceChemistryModel.C
+surfaceChemistryModel/BasicSurfaceChemistryModel/BasicSurfaceChemistryModels.C
+
+surfaceChemistrySolver/surfaceChemistrySolver/surfaceChemistrySolvers.C
+surfaceChemistrySolver/noSurfaceChemistrySolver/noSurfaceChemistrySolvers.C
+surfaceChemistrySolver/odeSCHEM/odeSurfaceChemistrySolvers.C
+reactions/makeSurfaceReactions.C
+
+LIB = $(FOAM_USER_LIBBIN)/libsurfaceChemistryModel

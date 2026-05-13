@@ -1,0 +1,48 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      surfaceChemistryProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// identify using particle-resolved model or porous media
+onlySurfaceCatalyst true; //-default value is "false"
+
+catalystRegions
+{
+    catalyticSurfaces     (heatedWall); // names of catalytic boundaries
+    catalyticZones        ( );  // empty list for particel resolved model
+}
+
+catalystToGeometricAreaRatio    30.0; //Fcat/geo, default is 1.0
+effectivenessFactor             0.03; //eta, default is 1.0
+
+surfaceChemistryType
+{
+    solver odeSCHEM;
+}
+
+chemistry           on;
+
+initialChemicalTimeStep 1e-07;
+
+odeSCHEMCoeffs
+{
+    solver          seulex;
+    absTol          1e-8;
+    relTol          0.01;
+}
+
+#include "reactions.surf"
+
+// ************************************************************************* //
