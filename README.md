@@ -82,7 +82,7 @@ A test cases in catalytic processes is available in the _tutorials_ directory.
 
 ## Authors 
 This package was developed based on the _DTLreactingFoam_ package [1] at the Clean Combustion & Energy Research Lab., Dept. of Mech. Engineering, Ulsan National Institute of Science and Technology (UNIST), Korea (Prof. C.S. Yoo: https://csyoo.unist.ac.kr/). If you publish results obtained by using this package, please cite our paper as follows:
-- D. N. Nguyen, J. H. Lee, H. W. Seo, H. J. Ahn, C. S. Yoo, surfaceChemistryFoam: An OpenFOAM-based library for detailed surface chemistry in reacting flow simulations, Computer Physics Communications (2026)(submitted).
+- D. N. Nguyen, J. H. Lee, H. W. Seo, H. J. Ahn, C. S. Yoo, surfaceChemistryFoam: An OpenFOAM-based library for detailed surface chemistry in reacting flow simulations, Computer Physics Communications 327 (2026) 110290 (https://doi.org/10.1016/j.cpc.2026.110290).
 
 - D. N. Nguyen, J. H. Lee, C. S. Yoo, DTLreactingFoam: An efficient CFD tool for laminar reacting flow simulations using detailed chemistry and transport with time-correlated thermophysical properties, Computer Physics Communications 322 (2026) 110052 (https://doi.org/10.1016/j.cpc.2026.110052).
 
