@@ -57,6 +57,7 @@ Description
 #include "BasicSurfaceChemistryModel.H"
 //end of for cat
 
+#include <vector>
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 int main(int argc, char *argv[])
