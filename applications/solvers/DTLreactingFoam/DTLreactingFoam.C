@@ -48,6 +48,7 @@ Description
 #include "fvcSmooth.H"
 #include "clockTime.H" //
 
+#include <vector>
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 int main(int argc, char *argv[])

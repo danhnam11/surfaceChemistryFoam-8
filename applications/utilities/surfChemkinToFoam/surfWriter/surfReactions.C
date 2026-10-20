@@ -31,7 +31,7 @@ Description
 \*---------------------------------------------------------------------------*/
 
 #include "surfReactions.H"
-
+#include <vector>
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 static string trimCopy(const string& s)
